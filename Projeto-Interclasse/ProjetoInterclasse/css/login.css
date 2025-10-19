@@ -1,0 +1,273 @@
+@font-face {
+	font-family: 'HK'; /* nome da fonte personalizada */
+	/* tenta usar uma fonte local com nome parecido, depois carrega o arquivo .ttf
+		 use aspas no caminho se o nome do arquivo contém espaços */
+	src: local('Robot Dreamer'), url("../fontes/Robot Dreamer.ttf") format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap; /* evita texto invisível enquanto carrega a fonte */
+}
+
+body{
+	/* Fallback sólido para navegadores que não suportam gradientes */
+	background-color: #0D0D0D;
+
+	/* Gradiente horizontal (da esquerda para a direita) */
+	background-image: linear-gradient(to bottom, #0D0D0D 0%, #0A4001 100%);
+
+	/* Alternativa: gradiente diagonal (45deg) — comente a linha acima e descomente a abaixo para testar */
+	/* background-image: linear-gradient(45deg, #0D0D0D 0%, #0A4001 100%); */
+
+	/* Garantir que o gradiente cubra toda a tela */
+	background-repeat: no-repeat;
+	background-attachment: fixed; /* mantém o fundo fixo ao rolar a página */
+	background-size: cover;
+
+	/* Configurações de fonte básicas para exemplo (opcional) */
+	color: #f1f1f1;
+
+	/* família de fontes base e suavização para melhorar renderização */
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	min-height: 100vh;
+
+
+}
+nav{
+		height: auto;
+		/* margem superior */
+
+		position: relative;
+
+		/* Fundo em estilo 'diamante' + gradiente de base
+			 - as duas primeiras linhas criam o padrão de losangos (diamantes)
+			 - a última gradiente dá o sombreado de base
+		*/
+		background-image:
+			linear-gradient(to bottom, #0A4001 0%, #0D0D0D 100%);
+		background-position: 0 0, 20px 20px, 0 0;
+		background-repeat: repeat, repeat, no-repeat;
+		background-blend-mode: overlay;
+
+}
+
+.DivbotaoNav{
+	height: 5pc;
+	position: relative; /* para ficar acima do pseudo-elemento */
+	z-index: 1;
+	display: flex;
+	gap: 12px;
+	margin-top: 1px;
+	align-items: center;
+	justify-content: space-between; /* empurra .nav-right para a borda direita */
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+    border: #0A4001 3px solid;
+}
+
+/* Container para os links do lado esquerdo */
+.nav-left{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Container que agrupa elementos do lado direito do nav (logo + login) */
+.nav-right{
+    display: flex;
+    align-items: center; /* centraliza verticalmente o login em relação ao nav */
+    gap: 10px;
+    margin-right: 1pc;
+}
+
+/* Links do nav: brancos e sem sublinhado */
+.botoesNav{
+	text-decoration: none;
+	color: #ffffff;
+	padding: 6px 10px;
+	display: inline-block;
+}
+
+.LogoInterclasse{
+    width: 60px;
+    height: auto;
+    padding-left: 1pc;
+}
+.btn-login{
+	background: none;
+	border: none;
+	color: white;
+	font-size: 1pc;
+	display: inline-flex;
+	align-items: center; /* centraliza verticalmente o texto com a imagem */
+	gap: .5pc; /* espaçamento entre imagem e texto */
+	cursor: pointer;
+	padding: 0.2pc 0.6pc; /* toque leve para acessibilidade */
+	background: transparent;
+}
+
+.login{
+	display: flex;
+	align-items: center;
+}
+.img-login{
+    width: 45px;
+    height: auto;
+	margin-right: 0.5pc;
+}
+
+
+h1{
+    font-size: 3pc;
+    color: white;
+    font-family: 'HK', sans-serif;
+    text-align: center;
+}
+
+
+.div-principal-login{
+	/* centraliza este container no viewport */
+	position: fixed;
+	inset: 0; /* top:0; right:0; bottom:0; left:0 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+/* CARD preto que envolve os inputs (h1 permanece fora) */
+.card{
+	background: #000; /* preto sólido */
+	border-radius: 10px;
+	padding: 1.6pc 1.6pc;
+	width: 86%;
+	box-shadow: 0 8px 40px rgba(255, 249, 249, 0.664), 0 0 0 1px rgba(255,255,255,0.03) inset;
+
+}
+
+.card-content{
+	display: flex;
+	flex-direction: column;
+	gap: 1pc;
+}
+
+.card-actions{
+	display:flex;
+	justify-content:center;
+	margin-top: .8pc;
+}
+
+.btn-confirm{
+	background: linear-gradient(90deg, #0A4001 0%, #2FBF4A 100%); /* escuro -> claro */
+	color: #fff;
+	border: none;
+	padding: .6pc 1.2pc;
+	border-radius: 8px;
+	font-size: 1pc;
+	cursor: pointer;
+	box-shadow: 0 6px 18px rgba(15,80,10,0.25);
+	transition: transform .15s ease, box-shadow .15s ease, filter .15s;
+    font-family: 'HK', sans-serif;
+}
+
+.btn-confirm:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 10px 26px rgba(15,80,10,0.32);
+    
+}
+
+.btn-confirm:active{
+	transform: translateY(0);
+	filter: brightness(.97);
+}
+
+.btn-confirm:focus{
+	outline: 3px solid rgba(47,191,74,0.18);
+	outline-offset: 3px;
+}
+
+.login-header{
+	display:flex;
+	justify-content:center;
+	margin-bottom: .5pc;
+}
+
+.login-img{
+	width: 64px;
+	height: auto;
+}
+
+/* cada campo (ícone + input) */
+.field{
+	display: flex;
+	align-items: center;
+	gap: .8pc;
+	padding: .4pc 0;
+}
+
+.field img{
+	width: 20px;
+	height: auto;
+	opacity: 0.9;
+}
+
+/* input com linha branca somente embaixo */
+input[type="text"],
+input[type="password"]{
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #ffffff; /* linha branca abaixo */
+	color: #fff;
+	padding: .4pc .2pc;
+	font-size: 1pc;
+	outline: none;
+	width: 100%;
+}
+
+input::placeholder{
+	color: rgb(255, 255, 255);
+}
+
+/* remover foco com borda feia e adicionar brilho sutil */
+input:focus{
+	box-shadow: 0 2px 14px rgba(255,255,255,0.02) inset;
+}
+
+/* responsividade */
+@media (max-width: 480px){
+	.card{ padding: 1pc; }
+	.login-img{ width: 48px; }
+}
+}
+.img-email{
+    width: 45px;
+    height: auto;
+    margin-right: 0.5pc;
+}
+.img-senha{
+    width: 40px;
+    height: auto;
+    margin-right: 0.5pc;
+
+}
+input{
+    width: 20pc;
+    height: 1.5pc;
+ 
+    border: none;
+    padding: 0.5pc;
+    font-size: 1pc;
+    font-family: 'HK', sans-serif;
+    margin-bottom: 1pc;
+    background: none;
+    
+}
+.card .login-img,
+.div-principal-login .login-img{
+	width: 140px;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto 1pc auto;
+
+}
