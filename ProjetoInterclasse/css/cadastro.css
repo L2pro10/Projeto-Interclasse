@@ -1,0 +1,387 @@
+@font-face {
+	font-family: 'HK'; /* nome da fonte personalizada */
+	/* tenta usar uma fonte local com nome parecido, depois carrega o arquivo .ttf
+		 use aspas no caminho se o nome do arquivo contém espaços */
+	src: local('Robot Dreamer'), url("../fontes/Robot Dreamer.ttf") format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap; /* evita texto invisível enquanto carrega a fonte */
+}
+
+body{
+	/* Fallback sólido para navegadores que não suportam gradientes */
+	background-color: #0D0D0D;
+
+	/* Gradiente horizontal (da esquerda para a direita) */
+	background-image: linear-gradient(to bottom, #0D0D0D 0%, #0A4001 100%);
+
+	/* Alternativa: gradiente diagonal (45deg) — comente a linha acima e descomente a abaixo para testar */
+	/* background-image: linear-gradient(45deg, #0D0D0D 0%, #0A4001 100%); */
+
+	/* Garantir que o gradiente cubra toda a tela */
+	background-repeat: no-repeat;
+	background-attachment: fixed; /* mantém o fundo fixo ao rolar a página */
+	background-size: cover;
+
+	/* Configurações de fonte básicas para exemplo (opcional) */
+	color: #f1f1f1;
+
+	/* família de fontes base e suavização para melhorar renderização */
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	min-height: 100vh;
+
+
+}
+nav{
+		height: auto;
+		/* margem superior */
+
+		position: relative;
+
+		/* Fundo em estilo 'diamante' + gradiente de base
+			 - as duas primeiras linhas criam o padrão de losangos (diamantes)
+			 - a última gradiente dá o sombreado de base
+		*/
+		background-image:
+			linear-gradient(to bottom, #0A4001 0%, #0D0D0D 100%);
+		background-position: 0 0, 20px 20px, 0 0;
+		background-repeat: repeat, repeat, no-repeat;
+		background-blend-mode: overlay;
+
+}
+
+.DivbotaoNav{
+	height: 5pc;
+	position: relative; /* para ficar acima do pseudo-elemento */
+	z-index: 1;
+	display: flex;
+	gap: 12px;
+	margin-top: 1px;
+	align-items: center;
+	justify-content: space-between; /* empurra .nav-right para a borda direita */
+	color: white;
+    font-family: 'HK', sans-serif;
+    border: #0A4001 3px solid;
+}
+
+/* Container para os links do lado esquerdo */
+.nav-left{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Container que agrupa elementos do lado direito do nav (logo + login) */
+.nav-right{
+    display: flex;
+    align-items: center; /* centraliza verticalmente o login em relação ao nav */
+    gap: 10px;
+    margin-right: 1pc;
+}
+
+/* Links do nav: brancos e sem sublinhado */
+.botoesNav{
+	text-decoration: none;
+	color: #ffffff;
+	padding: 6px 10px;
+	display: inline-block;
+		transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+	will-change: transform;
+}
+.botoesNav:hover {
+	transform: scale(1.10);
+	filter: drop-shadow(0 0 0.75pc rgba(0, 0, 0, 0.5));
+}
+.botoesNav:active {
+	transform: scale(0.95);
+	filter: drop-shadow(0 0 0.25pc rgba(0, 0, 0, 0.3));
+}
+
+.LogoInterclasse{
+    width: 60px;
+    height: auto;
+    padding-left: 1pc;
+}
+
+.logoExplicacoes{
+    display: flex;
+}
+
+.LogoJaguar{
+    width: 380px;
+    height: auto;
+    padding-bottom: 1pc;
+    margin-left: 4pc;
+    margin-top: 4.5pc;
+}
+.TextosLogos{
+    margin-top: 10.6pc;
+    font-size: 1.9pc;
+    line-height: 3pc;
+    font-family: 'HK', sans-serif;
+    margin-left: 1pc;
+}
+
+.div-principal-cadastro{
+    display: flex;
+}
+
+.card-cadastro{
+
+    border-radius: 0.8pc;
+    padding: 1.6pc 1.6pc;
+    width: 38pc;
+
+    margin-left: 6pc;
+    margin-top: 4.5pc;
+
+}
+.card-content-cadastro{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 0.8pc;
+    padding: 1.6pc 1.6pc;
+    width: 86%;
+    height: auto;
+    box-shadow: 0 8px 40px rgba(255, 249, 249, 0.5), 0 0 0 1px rgba(255,255,255,0.03) inset;
+
+}
+
+/* Campos e botões do formulário de cadastro */
+.card-content-cadastro .field{
+	margin-bottom: 1pc;
+}
+
+.card-content-cadastro input[type="text"],
+.card-content-cadastro input[type="email"],
+.card-content-cadastro input[type="password"],
+.card-content-cadastro input[type="date"]{
+	width: 90%;
+	padding: .6pc .8pc;
+	border-radius: 6px;
+	border: none;
+	background: rgba(255,255,255,0.03);
+	color: #fff;
+
+}
+
+.card-content-cadastro .actions{
+	display:flex;
+	justify-content:center; /* centraliza os botões dentro do card */
+}
+
+.btn-primary{
+	background: linear-gradient(90deg,#057a13,#2fbf4a);
+	border:none;
+	color:#fff;
+	padding:.6pc 1.2pc;
+	border-radius:6px;
+	cursor: pointer;
+    font-family: 'HK', sans-serif;
+
+}
+.btn-primary[disabled]{
+	opacity: .45;
+	cursor: not-allowed;
+    font-family: 'HK', sans-serif;
+}
+
+.roles label{ margin-right: 1pc; color: #fff; }
+
+p{
+    color: white;
+    font-family: 'HK', sans-serif;
+    text-align: center;
+}
+
+/* Custom radio appearance: transparent circle with white border
+   and a small light-green dot when checked. Accessible focus styles kept. */
+/* Apply to radio inputs inside .roles or globally for input[type="radio"] */
+input[type="radio"]{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 1.05pc;
+	height: 1.05pc;
+	border-radius: 50%;
+	border: 2px solid #ffffff; /* white border */
+	background-color: transparent; /* transparent fill */
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	margin-right: .6pc;
+	cursor: pointer;
+	transition: box-shadow .12s ease, transform .08s ease;
+}
+
+/* inner dot shown when checked using ::after */
+input[type="radio"]::after{
+	content: "";
+	position: absolute;
+	left: 48.8%;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	width: .6pc; /* size of inner dot */
+	height: .6pc;
+	border-radius: 50%;
+	background: #00ff48; /* light green */
+	transition: transform .12s ease;
+	pointer-events: none;
+}
+
+/* When radio is checked, scale the inner dot to visible */
+input[type="radio"]:checked::after{
+	transform: translate(-50%, -50%) scale(1);
+}
+
+/* Focus styles for keyboard accessibility */
+input[type="radio"]:focus{
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(43, 179, 94, 0.18); /* subtle green glow */
+}
+
+/* Support case where markup places input inside label; ensure label text aligns */
+.roles label{ display: inline-flex; align-items: center; gap: .4pc; }
+
+/* Novos estilos para o cadastro funcional */
+.btn-secondary {
+    background: linear-gradient(90deg, #666, #999);
+    border: none;
+    color: #fff;
+    padding: .6pc 1.2pc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'HK', sans-serif;
+    margin-right: 1pc;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #777, #aaa);
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.8pc;
+    margin-top: 0.3pc;
+    display: block;
+}
+
+.success-message {
+    text-align: center;
+    padding: 2pc 0;
+}
+
+.success-message h3 {
+    color: #2fbf4a;
+    margin-bottom: 1pc;
+}
+
+.success-message p {
+    margin-bottom: 0.5pc;
+    line-height: 1.5;
+}
+
+.field {
+    position: relative;
+    margin-bottom: 1.5pc;
+}
+
+input:invalid {
+    border-color: #ff6b6b;
+}
+
+input:valid {
+    border-color: #2fbf4a;
+}
+
+/* Estilos para upload de foto */
+.photo-upload {
+    text-align: center;
+    margin: 1pc 0;
+}
+
+.photo-preview {
+    width: 120px;
+    height: 160px; /* Proporção 3x4 */
+    border: 2px dashed #2fbf4a;
+    border-radius: 8px;
+    margin: 0 auto 1pc auto;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.photo-preview .placeholder {
+    color: #2fbf4a;
+    text-align: center;
+    padding: 1pc;
+}
+
+.photo-preview .placeholder i {
+    font-size: 2pc;
+    display: block;
+    margin-bottom: 0.5pc;
+}
+
+.photo-upload input[type="file"] {
+    display: none;
+}
+
+.btn-upload {
+    background: linear-gradient(90deg, #057a13, #2fbf4a);
+    border: none;
+    color: #fff;
+    padding: 0.5pc 1pc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'HK', sans-serif;
+    font-size: 0.9pc;
+    transition: all 0.18s ease;
+}
+
+.btn-upload:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 0.5pc rgba(47, 191, 74, 0.5));
+}
+
+.photo-requirements {
+    font-size: 0.8pc;
+    color: #ccc;
+    margin-top: 0.5pc;
+    text-align: center;
+}
+
+/* Loading durante upload */
+.photo-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #2fbf4a;
+}
+
+.photo-error {
+    color: #ff6b6b;
+    font-size: 0.8pc;
+    text-align: center;
+    margin-top: 0.5pc;
+    display: none;
+}

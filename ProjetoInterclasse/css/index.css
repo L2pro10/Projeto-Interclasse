@@ -1,0 +1,212 @@
+@font-face {
+	font-family: 'HK'; /* nome da fonte personalizada */
+	/* tenta usar uma fonte local com nome parecido, depois carrega o arquivo .ttf
+		 use aspas no caminho se o nome do arquivo contém espaços */
+	src: local('Robot Dreamer'), url("../fontes/Robot Dreamer.ttf") format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap; /* evita texto invisível enquanto carrega a fonte */
+}
+
+/* Fundo da página: fallback sólido + gradiente linear
+	 - A cor sólida abaixo garante um visual coerente em navegadores muito antigos
+	 - Ajuste as cores e o ângulo conforme desejar
+*/
+body{
+	/* Fallback sólido para navegadores que não suportam gradientes */
+	background-color: #0D0D0D;
+
+	/* Gradiente horizontal (da esquerda para a direita) */
+	background-image: linear-gradient(to bottom, #0D0D0D 0%, #0A4001 100%);
+
+	/* Alternativa: gradiente diagonal (45deg) — comente a linha acima e descomente a abaixo para testar */
+	/* background-image: linear-gradient(45deg, #0D0D0D 0%, #0A4001 100%); */
+
+	/* Garantir que o gradiente cubra toda a tela */
+	background-repeat: no-repeat;
+	background-attachment: fixed; /* mantém o fundo fixo ao rolar a página */
+	background-size: cover;
+
+	/* Configurações de fonte básicas para exemplo (opcional) */
+	color: #f1f1f1;
+
+	/* família de fontes base e suavização para melhorar renderização */
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	min-height: 100vh;
+}
+nav{
+		height: auto;
+		/* margem superior */
+
+		position: relative;
+
+		/* Fundo em estilo 'diamante' + gradiente de base
+			 - as duas primeiras linhas criam o padrão de losangos (diamantes)
+			 - a última gradiente dá o sombreado de base
+		*/
+		background-image:
+			linear-gradient(to bottom, #0A4001 0%, #0D0D0D 100%);
+		background-position: 0 0, 20px 20px, 0 0;
+		background-repeat: repeat, repeat, no-repeat;
+		background-blend-mode: overlay;
+		
+}
+.DivbotaoNav{
+	height: 5pc;
+	position: relative; /* para ficar acima do pseudo-elemento */
+	z-index: 1;
+	display: flex;
+	gap: 12px;
+	margin-top: 1px;
+	align-items: center;
+	justify-content: space-between; /* empurra .nav-right para a borda direita */
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+    border: #0A4001 3px solid;
+	    font-family: 'HK', sans-serif;
+}
+
+/* Container para os links do lado esquerdo */
+.nav-left{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Container que agrupa elementos do lado direito do nav (logo + login) */
+.nav-right{
+    display: flex;
+    align-items: center; /* centraliza verticalmente o login em relação ao nav */
+    gap: 10px;
+    margin-right: 1pc;
+}
+
+/* Links do nav: brancos e sem sublinhado */
+.botoesNav{
+	text-decoration: none;
+	color: #ffffff;
+	padding: 6px 10px;
+	display: inline-block;
+		transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+	will-change: transform;
+}
+.botoesNav:hover {
+	transform: scale(1.10);
+	filter: drop-shadow(0 0 0.75pc rgba(0, 0, 0, 0.5));
+}
+.botoesNav:active {
+	transform: scale(0.95);
+	filter: drop-shadow(0 0 0.25pc rgba(0, 0, 0, 0.3));
+}
+
+.LogoInterclasse{
+    width: 60px;
+    height: auto;
+    padding-left: 1pc;
+}
+
+.LogoJaguar{
+    width: 300px;
+    height: auto;
+    padding-bottom: 1pc;
+    margin-left: 4pc;
+}
+
+
+
+.TextosLogos{
+    margin-top: 3.6pc;
+    font-size: 1.5pc;
+    line-height: 3pc;
+    font-family: 'HK', sans-serif;
+    margin-left: 1pc;
+}
+.tituloPrincipal1{
+    color: black;
+    background-color: white;
+    width: 17pc;
+    padding-left: 1pc;
+}
+
+.divtexto{
+    margin-left: 6pc;
+    margin-top: -5pc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-size: 0.8pc;
+}
+
+.divPrincipal{
+    display: flex;
+}
+.logoExplicacoes{
+    display: flex;
+}
+
+
+.divEquipesParticipantes{
+     font-family: 'HK', sans-serif;
+     justify-items: center;
+     height: auto;
+     width: 200pc;
+
+}
+.img-ver{
+	width: 21pc;
+	height: auto;
+	margin-top: 1pc;
+}
+.btn-ver{
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	display: inline-block;
+	transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+	will-change: transform;
+	outline: none;
+}
+.btn-ver:hover {
+	transform: scale(1.05);
+	filter: drop-shadow(0 0 0.75pc rgba(0, 0, 0, 0.5));
+}
+.btn-ver:active {
+	transform: scale(0.95);
+	filter: drop-shadow(0 0 0.25pc rgba(0, 0, 0, 0.3));
+}
+.btn-login{
+	background: none;
+	border: none;
+	color: white;
+	font-size: 1pc;
+	display: inline-flex;
+	align-items: center; /* centraliza verticalmente o texto com a imagem */
+	gap: .5pc; /* espaçamento entre imagem e texto */
+	cursor: pointer;
+	padding: 0.2pc 0.6pc; /* toque leve para acessibilidade */
+	background: transparent;
+		transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+	will-change: transform;
+	    font-family: 'HK', sans-serif;
+}
+.btn-login:hover {
+	transform: scale(1.10);
+	filter: drop-shadow(0 0 0.75pc rgba(0, 0, 0, 0.5));
+}
+.btn-login:active {
+	transform: scale(0.95);
+	filter: drop-shadow(0 0 0.25pc rgba(0, 0, 0, 0.3));
+}
+
+.login{
+	display: flex;
+	align-items: center;
+}
+.img-login{
+    width: 45px;
+    height: auto;
+	margin-right: 0.5pc;
+}

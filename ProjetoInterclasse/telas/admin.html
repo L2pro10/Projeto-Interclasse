@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Reset Banco de Dados</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0D0D0D 0%, #0A4001 100%);
+            color: white;
+            font-family: 'HK', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #2fbf4a;
+        }
+        
+        h1 {
+            color: #2fbf4a;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .status-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+        
+        .danger-zone {
+            background: rgba(255,0,0,0.1);
+            border: 2px solid #ff4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'HK', sans-serif;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #ffaa00, #ff7700);
+            color: white;
+        }
+        
+        .btn-info {
+            background: linear-gradient(45deg, #2fbf4a, #057a13);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .confirmation {
+            display: none;
+            background: rgba(255,0,0,0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>🔧 ADMIN - CONTROLE DO BANCO DE DADOS</h1>
+        
+        <div class="status-card">
+            <h2>📊 Status do Banco</h2>
+            <div id="status-content">
+                <div class="status-item">
+                    <span>👥 Usuários Cadastrados:</span>
+                    <span id="users-count">0</span>
+                </div>
+                <div class="status-item">
+                    <span>⚽ Times Criados:</span>
+                    <span id="teams-count">0</span>
+                </div>
+                <div class="status-item">
+                    <span>🏆 Partidas Registradas:</span>
+                    <span id="matches-count">0</span>
+                </div>
+                <div class="status-item">
+                    <span>📷 Fotos Armazenadas:</span>
+                    <span id="photos-count">0</span>
+                </div>
+            </div>
+            <button class="btn btn-info" onclick="updateStatus()">🔄 Atualizar Status</button>
+        </div>
+
+        <div class="danger-zone">
+            <h2>⚠️ ZONA DE PERIGO</h2>
+            <p><strong>Atenção:</strong> Estas ações não podem ser desfeitas!</p>
+            
+            <div>
+                <button class="btn btn-warning" onclick="showConfirmation('users')">
+                    🗑️ Limpar Apenas Usuários
+                </button>
+                
+                <button class="btn btn-warning" onclick="showConfirmation('teams')">
+                    🗑️ Limpar Apenas Times
+                </button>
+                
+                <button class="btn btn-warning" onclick="showConfirmation('matches')">
+                    🗑️ Limpar Apenas Partidas
+                </button>
+                
+                <button class="btn btn-danger" onclick="showConfirmation('all')">
+                    💥 LIMPAR TUDO (COMPLETO)
+                </button>
+            </div>
+
+            <div id="confirm-users" class="confirmation">
+                <p>Tem certeza que deseja remover TODOS os usuários?</p>
+                <button class="btn btn-danger" onclick="clearUsers()">✅ SIM, LIMPAR USUÁRIOS</button>
+                <button class="btn btn-info" onclick="hideAllConfirmations()">❌ CANCELAR</button>
+            </div>
+
+            <div id="confirm-teams" class="confirmation">
+                <p>Tem certeza que deseja remover TODOS os times?</p>
+                <button class="btn btn-danger" onclick="clearTeams()">✅ SIM, LIMPAR TIMES</button>
+                <button class="btn btn-info" onclick="hideAllConfirmations()">❌ CANCELAR</button>
+            </div>
+
+            <div id="confirm-matches" class="confirmation">
+                <p>Tem certeza que deseja remover TODAS as partidas?</p>
+                <button class="btn btn-danger" onclick="clearMatches()">✅ SIM, LIMPAR PARTIDAS</button>
+                <button class="btn btn-info" onclick="hideAllConfirmations()">❌ CANCELAR</button>
+            </div>
+
+            <div id="confirm-all" class="confirmation">
+                <p style="color: #ff4444; font-weight: bold;">
+                    ⚠️ ATENÇÃO TOTAL! ⚠️<br>
+                    Isso vai remover TODOS os dados: usuários, times, partidas, fotos, TUDO!
+                </p>
+                <button class="btn btn-danger" onclick="clearAllData()">💥 SIM, LIMPAR TUDO</button>
+                <button class="btn btn-info" onclick="hideAllConfirmations()">❌ CANCELAR</button>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn btn-info" onclick="window.location.href = '../index.html'">
+                🏠 Voltar para Página Inicial
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/resetDatabase.js"></script>
+    <script>
+        // Inicializar sistema de reset
+        const dbReset = new DatabaseReset();
+        
+        // Atualizar status na tela
+        function updateStatus() {
+            const status = dbReset.showDatabaseStatus();
+            document.getElementById('users-count').textContent = status.users;
+            document.getElementById('teams-count').textContent = status.teams;
+            document.getElementById('matches-count').textContent = status.matches;
+            document.getElementById('photos-count').textContent = status.photos;
+        }
+        
+        // Mostrar confirmação
+        function showConfirmation(type) {
+            hideAllConfirmations();
+            document.getElementById(`confirm-${type}`).style.display = 'block';
+        }
+        
+        // Esconder todas as confirmações
+        function hideAllConfirmations() {
+            document.querySelectorAll('.confirmation').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+        
+        // Funções de limpeza
+        function clearUsers() {
+            dbReset.clearUsers();
+            updateStatus();
+            hideAllConfirmations();
+        }
+        
+        function clearTeams() {
+            dbReset.clearTeams();
+            updateStatus();
+            hideAllConfirmations();
+        }
+        
+        function clearMatches() {
+            dbReset.clearMatches();
+            updateStatus();
+            hideAllConfirmations();
+        }
+        
+        function clearAllData() {
+            dbReset.clearAllData();
+        }
+        
+        // Atualizar status quando a página carregar
+        document.addEventListener('DOMContentLoaded', updateStatus);
+    </script>
+</body>
+</html>

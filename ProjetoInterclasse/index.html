@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interclasse - ETEC CT</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav>
+        <div class="DivbotaoNav">
+            <div class="nav-left">
+                <img src="./img/interclasse 1.png" alt="Logo Interclasse" class="LogoInterclasse">
+                <a href="" class="botoesNav">EQUIPES</a>
+                <a href="" class="botoesNav">CLASSIFICAÇÃO</a>
+                <a href="" class="botoesNav">RESULTADOS</a>
+                <a href="" class="botoesNav">ARTILHARIA</a>
+                <!-- No nav-left, adicione: -->
+                <a href="./telas/admin.html" class="botoesNav" style="color: #ff4444;">ADMIN</a>
+            </div>
+
+            <!-- Agrupamento à direita: logo + login -->
+            <div class="nav-right">
+                <div class="login">
+                    <div id="user-info" style="display: none; align-items: center; gap: 15px;">
+                        <span id="user-name" style="color: white; font-family: 'HK', sans-serif; font-size: 14px;"></span>
+                        <button id="btn-logout" class="btn-login" style="background: none; border: none; color: white; cursor: pointer; font-family: 'HK', sans-serif; padding: 6px 12px; border: 1px solid #2fbf4a; border-radius: 4px;">
+                            Sair
+                        </button>
+                    </div>
+                    <div id="login-section">
+                        <a href="./telas/login.html"> 
+                            <button class="btn-login">
+                                <img src="./img/872944 1.png" alt="Ícone Login" class="img-login">LOGIN
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="divPrincipal">
+        <div class="divLogoTitulo">
+            <div class="logoExplicacoes">
+                <div>
+                    <img src="./img/LogoJaguar.png" alt="" class="LogoJaguar">
+                </div>
+                <div class="TextosLogos">
+                    <h1 class="tituloPrincipal">INTERCURSO</h1>
+                    <h1 class="tituloPrincipal">ETEC CT</h1>
+                    <h2 class="tituloPrincipal1">PREPARE-SE</h2>
+                </div>
+            </div>
+
+            <div class="divtexto">
+                <h3>No dia 2 de dezembro, vai rolar o torneio de futsal abrindo o nosso Interclasse de 2025! Vai ser um dia cheio de jogos insanos, muita torcida, rivalidade saudável e, claro, aquele clima de amizade que faz o interclasse ser especial. As turmas vão entrar em quadra pra mostrar raça, entrosamento e quem realmente manda na bola. O foco é competir com respeito, jogar limpo e aproveitar cada momento — porque mais do que vencer, o importante é fazer parte dessa festa do esporte. Então já se prepara, traz a torcida, veste a camisa e vem vibrar com a gente, porque o dia 2 vai ser só futsal e emoção! 
+                </h3>
+                <button class="btn-ver"><img src="./img/ver-detalhes.png" alt="" class="img-ver"></button>
+            </div>
+        </div>
+
+        <div class="divEquipesParticipantes">
+            <h2>EQUIPES PARTICIPANTES</h2>
+        </div>
+    </div>
+
+    <script>
+        // Sistema de gerenciamento de sessão para a página inicial
+        class SessionManager {
+            constructor() {
+                this.currentUser = null;
+                this.loadSession();
+            }
+
+            loadSession() {
+                try {
+                    // Tentar sessionStorage primeiro
+                    let userData = sessionStorage.getItem('currentUser');
+                    if (!userData) {
+                        // Se não tiver, tentar localStorage
+                        userData = localStorage.getItem('currentUser');
+                        if (userData) {
+                            // Copiar para sessionStorage
+                            sessionStorage.setItem('currentUser', userData);
+                        }
+                    }
+                    
+                    if (userData) {
+                        this.currentUser = JSON.parse(userData);
+                        console.log('✅ Sessão carregada:', this.currentUser);
+                    } else {
+                        console.log('ℹ️ Nenhuma sessão encontrada');
+                    }
+                } catch (error) {
+                    console.error('❌ Erro ao carregar sessão:', error);
+                    this.clearSession();
+                }
+            }
+
+            isLoggedIn() {
+                return this.currentUser !== null && this.currentUser.name && this.currentUser.name !== 'undefined';
+            }
+
+            getUserName() {
+                return this.currentUser ? this.currentUser.name : '';
+            }
+
+            clearSession() {
+                this.currentUser = null;
+                sessionStorage.removeItem('currentUser');
+                localStorage.removeItem('currentUser');
+                console.log('🗑️ Sessão limpa');
+            }
+        }
+
+        // Atualizar navbar baseado no login
+        function updateNavbar() {
+            const userInfo = document.getElementById('user-info');
+            const loginSection = document.getElementById('login-section');
+            const userName = document.getElementById('user-name');
+            const btnLogout = document.getElementById('btn-logout');
+
+            const sessionManager = new SessionManager();
+            
+            console.log('🔄 Atualizando navbar...');
+            console.log('Usuário logado:', sessionManager.isLoggedIn());
+            console.log('Dados do usuário:', sessionManager.currentUser);
+
+            if (sessionManager.isLoggedIn()) {
+                const name = sessionManager.getUserName();
+                console.log('👤 Nome do usuário:', name);
+                
+                userName.textContent = `Olá, ${name}`;
+                userInfo.style.display = 'flex';
+                loginSection.style.display = 'none';
+                console.log('✅ Navbar atualizada: usuário logado');
+            } else {
+                userInfo.style.display = 'none';
+                loginSection.style.display = 'block';
+                console.log('✅ Navbar atualizada: usuário não logado');
+            }
+
+            // Configurar logout
+            if (btnLogout) {
+                // Remover event listeners anteriores para evitar duplicação
+                btnLogout.replaceWith(btnLogout.cloneNode(true));
+                const newBtnLogout = document.getElementById('btn-logout');
+                
+                newBtnLogout.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🚪 Fazendo logout...');
+                    sessionManager.clearSession();
+                    // Forçar recarregamento para garantir que a navbar atualize
+                    window.location.href = 'index.html';
+                });
+            }
+        }
+
+        // Executar quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Página inicial carregada');
+            updateNavbar();
+        });
+
+        // Também executar quando a página for focada (caso tenha feito login em outra aba)
+        window.addEventListener('focus', function() {
+            console.log('👀 Página focada, verificando sessão...');
+            updateNavbar();
+        });
+
+        // Verificar a cada 2 segundos por mudanças na sessão (apenas para debug)
+        setInterval(() => {
+            const userData = sessionStorage.getItem('currentUser') || localStorage.getItem('currentUser');
+            if (userData) {
+                console.log('⏰ Verificação periódica - Usuário ainda logado');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

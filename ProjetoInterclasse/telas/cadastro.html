@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Interclasse</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+<body>
+    <nav>
+        <div class="DivbotaoNav">
+            <div class="nav-left">
+                <img src="../img/interclasse 1.png" alt="" class="LogoInterclasse">
+                <a href="../index.html" class="botoesNav">INICIO</a>
+                <a href="equipes.html" class="botoesNav">EQUIPES</a>
+                <a href="classificacao.html" class="botoesNav">CLASSIFICAÇÃO</a>
+                <a href="resultados.html" class="botoesNav">RESULTADOS</a>
+                <a href="artilharia.html" class="botoesNav">ARTILHARIA</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="div-principal-cadastro">
+        <div class="logoExplicacoes">
+            <div>
+                <img src="../img/LogoJaguar.png" alt="" class="LogoJaguar">
+            </div>
+            <div class="TextosLogos">
+                <h1 class="tituloPrincipal">INTERCURSO</h1>
+                <h1 class="tituloPrincipal">ETEC CT</h1>
+                <h2 class="tituloPrincipal1">PREPARE-SE</h2>
+            </div>
+        </div>
+
+        <div class="card-cadastro">
+            <div class="card-content-cadastro">
+                <div id="cad-steps">
+                    <!-- Step 1: email + senha -->
+                    <div class="step" data-step="1">
+                        <p>Coloque seu email e senha</p>
+                        <div class="field">
+                            <input id="c-email" type="email" placeholder="Seu email" required>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+                        <div class="field field-password">
+                            <input id="c-password" type="password" placeholder="Senha (mínimo 6 caracteres)" minlength="6" required>
+                            <span class="error-message" id="password-error"></span>
+                        </div>
+                        <div class="actions">
+                            <button id="c-next-1" class="btn-primary" type="button" disabled>Avançar</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: confirmar senha -->
+                    <div class="step" data-step="2" style="display:none">
+                        <p>Confirme sua senha</p>
+                        <div class="field field-password">
+                            <input id="c-password-confirm" type="password" placeholder="Confirme a senha" required>
+                            <span class="error-message" id="confirm-error"></span>
+                        </div>
+                        <div class="actions">
+                            <button id="c-back-1" class="btn-secondary" type="button">Voltar</button>
+                            <button id="c-next-2" class="btn-primary" type="button" disabled>Avançar</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: nome, nascimento, função + FOTO -->
+                    <div class="step" data-step="3" style="display:none">
+                        <p>Coloque seu nome, data de nascimento, sua função e foto 3x4</p>
+                        
+                        <!-- Upload de Foto -->
+                        <div class="photo-upload">
+                            <div class="photo-preview" id="photo-preview">
+                                <div class="placeholder">
+                                    <i>📷</i>
+                                    Clique para adicionar foto 3x4
+                                </div>
+                                <img id="photo-preview-img" src="" alt="Preview da foto">
+                                <div class="photo-loading" id="photo-loading">Carregando...</div>
+                            </div>
+                            <input type="file" id="photo-input" accept="image/*">
+                            <button type="button" class="btn-upload" id="btn-upload">Selecionar Foto</button>
+                            <div class="photo-requirements">
+                                Formato: JPG, PNG ou GIF • Tamanho máximo: 2MB<br>
+                                Dimensões recomendadas: 3x4 (300x400px)
+                            </div>
+                            <div class="photo-error" id="photo-error"></div>
+                        </div>
+
+                        <div class="field">
+                            <input id="c-name" type="text" placeholder="Nome completo" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+                        <div class="field">
+                            <input id="c-dob" type="date" required>
+                            <span class="error-message" id="dob-error"></span>
+                        </div>
+                        <div class="field roles">
+                            <label><input type="radio" name="role" value="capitao" required> Capitão</label>
+                            <label><input type="radio" name="role" value="juiz" required> Juiz</label>
+                            <label><input type="radio" name="role" value="jogador" required> Jogador</label>
+                            <span class="error-message" id="role-error"></span>
+                        </div>
+                        <div class="actions">
+                            <button id="c-back-2" class="btn-secondary" type="button">Voltar</button>
+                            <button id="c-finish" class="btn-primary" type="button" disabled>Finalizar cadastro</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Sucesso -->
+                    <div class="step" data-step="4" style="display:none">
+                        <div class="success-message">
+                            <h3>🎉 Cadastro Concluído!</h3>
+                            <p>Bem-vindo ao Interclasse ETEC CT!</p>
+                            <p id="success-details"></p>
+                            <div class="actions">
+                                <button id="c-go-login" class="btn-primary" type="button">Fazer Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/cadastro.js"></script>
+</body>
+</html>

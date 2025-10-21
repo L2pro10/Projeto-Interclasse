@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Interclasse</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <nav>
+        <div class="DivbotaoNav">
+            <div class="nav-left">
+                <img src="../img/interclasse 1.png" alt="Logo Interclasse" class="LogoInterclasse">
+                <a href="../index.html" class="botoesNav">INICIO</a>
+                <a href="equipes.html" class="botoesNav">EQUIPES</a>
+                <a href="classificacao.html" class="botoesNav">CLASSIFICAÇÃO</a>
+                <a href="resultados.html" class="botoesNav">RESULTADOS</a>
+                <a href="artilharia.html" class="botoesNav">ARTILHARIA</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="div-principal-login">
+        <div>
+            <h1>LOGIN</h1>
+
+            <!-- Card preto que contém os campos de login -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="login-header">
+                        <img src="../img/872944 1.png" alt="Ícone de Login" class="login-img">
+                    </div>
+
+                    <div class="field">
+                        <img src="../img/email.png" alt="Ícone Email" class="img-email">
+                        <input type="text" id="username" name="username" placeholder="Digite seu email" autocomplete="email">
+                    </div>
+
+                    <div class="field field-password">
+                        <img src="../img/senha.png" alt="Ícone Senha" class="img-senha">
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha" autocomplete="current-password">
+                        <button type="button" class="btn-toggle-pass" aria-label="Mostrar senha">👁</button>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-confirm" type="button">Confirmar</button>
+                    </div>
+                    
+                    <p>Não tem login? <a href="./cadastro.html">cadastre-se</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARREGAR OS SCRIPTS NA ORDEM CORRETA -->
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/sessionManager.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>
